@@ -2,19 +2,23 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
 
-//constantes de la app
+//importaciones de la app
 
 const port = process.env.PORT || 5000;
-
+const { errorHandler } = require('./middleware/errorMiddleware');
+ 
 //importacion de base de datos
 require('./database.js');
 
 //importaciones de rutas
 const products = require('./routes/productRoutes.js');
-const app = express();
 
+//declare express
+const app = express();
+//middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
+app.use(errorHandler)
 
 // implementacion de las rutas
 app.use('/api/products',products);

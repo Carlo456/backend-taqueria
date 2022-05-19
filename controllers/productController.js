@@ -27,9 +27,8 @@ const getProduct =  (req, res) =>{
 const createProduct = (req, res) => {
     let product = req.body;
     if(!product.name || !product.price){
-        res.status(400).json({
-            message: "Falta el nombre o el precio del producto"
-        });
+        res.status(400)
+        throw new Error('Please add product values...')
     } else {
         res.status(200).json({
             message: "Se registro el producto exitosamente"
