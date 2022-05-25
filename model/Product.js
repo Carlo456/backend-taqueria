@@ -9,9 +9,7 @@ const productSchema = mongoose.Schema({
         type: Number,
         required: [true, 'Please add the product price...']
     },
-    quantity: {
-        type: Number,
-    } 
+ 
 },{
     timestamps: true
 });
